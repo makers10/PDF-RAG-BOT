@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env/
+
+# FAISS / Vector store
+*.pkl
+
+# Models
+*.bin
+*.pt
+*.model
+
+# PDF files (optional)
+*.pdf
+
+# OS
+.DS_Store
+Thumbs.db
