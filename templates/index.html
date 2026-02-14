@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF RAG Bot - AI Document Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="url(#gradient)" />
+                    <path d="M12 20L18 26L28 14" stroke="white" stroke-width="3" stroke-linecap="round" />
+                    <defs>
+                        <linearGradient id="gradient" x1="0" y1="0" x2="40" y2="40">
+                            <stop offset="0%" stop-color="#667eea" />
+                            <stop offset="100%" stop-color="#764ba2" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>PDF RAG Bot</h1>
+            </div>
+            <p class="subtitle">AI-Powered Document Question Answering</p>
+        </header>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <div class="upload-card">
+                <div class="upload-icon">📄</div>
+                <h2>Upload Your PDF</h2>
+                <p>Drop your PDF here or click to browse</p>
+
+                <input type="file" id="fileInput" accept=".pdf" hidden>
+                <button class="btn-upload" onclick="document.getElementById('fileInput').click()">
+                    Choose File
+                </button>
+
+                <div id="uploadStatus" class="upload-status"></div>
+                <div id="fileName" class="file-name"></div>
+            </div>
+        </section>
+
+        <!-- Chat Section -->
+        <section class="chat-section" id="chatSection" style="display: none;">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h3>Ask Questions</h3>
+                    <span class="status-indicator">● Ready</span>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="welcome-message">
+                        <p>👋 Hi! I'm ready to answer questions about your document.</p>
+                        <p>Try asking something specific!</p>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <textarea id="questionInput" placeholder="Ask a question about your PDF..." rows="1"></textarea>
+                    <button class="btn-send" id="sendBtn" onclick="askQuestion()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
