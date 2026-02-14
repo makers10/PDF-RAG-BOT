@@ -1,0 +1,11 @@
+streamlit
+streamlit-lottie
+transformers
+torch
+langchain
+langchain-community
+faiss-cpu
+pypdf2
+requests
+sentence-transformers
+flask
