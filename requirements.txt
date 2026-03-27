@@ -9,3 +9,7 @@ pypdf2
 requests
 sentence-transformers
 flask
+langchain-openai
+python-dotenv
+gunicorn
+python-multipart

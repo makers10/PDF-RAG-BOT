@@ -1,13 +1,10 @@
-from rag_pipeline import create_vectorstore_from_pdf, create_qa_chain
+from rag_pipeline import create_vectorstore_from_pdf, answer_question
 
 # Change this to your actual PDF filename
 pdf_path = "sample.pdf"
 
 print("Creating vector store...")
-vector_store = create_vectorstore_from_pdf(pdf_path)
-
-print("Creating QA chain...")
-qa_chain = create_qa_chain(vector_store)
+vector_store, multi_level_retriever, raptor_tree = create_vectorstore_from_pdf(pdf_path)
 
 while True:
     query = input("\nAsk something (or type 'exit'): ")
@@ -15,11 +12,12 @@ while True:
     if query.lower() == "exit":
         break
 
-    response = qa_chain(query)
+    print("\nSearching for answer...")
+    answer = answer_question(
+        vector_store, 
+        query, 
+        multi_level_retriever=multi_level_retriever,
+        raptor_tree=raptor_tree
+    )
 
-    print("\nAnswer:\n", response["result"])
-
-    print("\nSources:\n")
-    for doc in response["source_documents"]:
-        print(doc.page_content[:300])
-        print("------")
+    print("\nAnswer:\n", answer)
