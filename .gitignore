@@ -11,7 +11,7 @@ venv/
 
 # FAISS / Vector store
 *.pkl
-
+*.md
 # Models
 *.bin
 *.pt
@@ -23,3 +23,6 @@ venv/
 # OS
 .DS_Store
 Thumbs.db
+
+# Markdown files
+*.md
